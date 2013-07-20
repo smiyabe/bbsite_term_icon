@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ *
+ */
 
 /**
  * Implements hook_block_theme().
@@ -12,6 +16,9 @@ function bbsite_term_icon_theme() {
   );
 }
 
+/**
+ * Implements hook_field_formatter_info()
+ */
 function bbsite_term_icon_field_formatter_info() {
   return array(
     'bbsite_term_icon_reference_icon_link' => array(
@@ -22,6 +29,9 @@ function bbsite_term_icon_field_formatter_info() {
   );
 }
 
+/**
+ * Implements hook_field_formatter_settings_form()
+ */
 function bbsite_term_icon_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
@@ -35,7 +45,7 @@ function bbsite_term_icon_field_formatter_settings_form($field, $instance, $view
     '#options' => $image_styles,
   );
 
-  $image_fields = _bbsite_term_icon_term_fields($field['settings']['allowed_values'][0]['vocabulary']);
+  $image_fields = _bbsite_term_icon_term_image_fields($field['settings']['allowed_values'][0]['vocabulary']);
   $element['icon_field'] = array(
     '#title' => t('Icon field'),
     '#type' => 'select',
@@ -46,6 +56,9 @@ function bbsite_term_icon_field_formatter_settings_form($field, $instance, $view
   return $element;
 }
 
+/**
+ * Implements hook_field_formatter_settings_summary()
+ */
 function bbsite_term_icon_field_formatter_settings_summary($field, $instance, $view_mode) {
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
@@ -64,7 +77,7 @@ function bbsite_term_icon_field_formatter_settings_summary($field, $instance, $v
     $summary[] = t('Original image');
   }
 
-  $image_fields = _bbsite_term_icon_term_fields($field['settings']['allowed_values'][0]['vocabulary']);
+  $image_fields = _bbsite_term_icon_term_image_fields($field['settings']['allowed_values'][0]['vocabulary']);
   unset($image_fields['']);
   if (isset($image_fields[$settings['icon_field']])) {
     $field_label = $image_fields[$settings['icon_field']];
@@ -76,7 +89,10 @@ function bbsite_term_icon_field_formatter_settings_summary($field, $instance, $v
   return implode('<br />', $summary);
 }
 
-function _bbsite_term_icon_term_fields($vocabulary_name) {
+/**
+ * vocabulary に追加されている image フィールドを取得する
+ */
+function _bbsite_term_icon_term_image_fields($vocabulary_name) {
   $image_fields = array();
   $category_fields = field_info_instances("taxonomy_term", $vocabulary_name);
   foreach ($category_fields as $key => $item) {
@@ -88,6 +104,9 @@ function _bbsite_term_icon_term_fields($vocabulary_name) {
   return $image_fields;
 }
 
+/**
+ * Implements hook_field_formatter_view()
+ */
 function bbsite_term_icon_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
   if ($display['type'] == 'bbsite_term_icon_reference_icon_link') {
@@ -110,6 +129,9 @@ function bbsite_term_icon_field_formatter_view($entity_type, $entity, $field, $i
   return $element;
 }
 
+/**
+ * アイコンリンクのテーマ関数
+ */
 function theme_bbsite_term_icon_formatter($element) {
   $term = $element['term'];
   $icon = $element['icon'];
