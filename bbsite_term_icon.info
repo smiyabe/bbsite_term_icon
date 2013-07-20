@@ -1,0 +1,5 @@
+name = BBSite Term icon
+description = BBSite Term icon
+core = 7.x
+package = BBSite
+version = '7.x-1.0'
