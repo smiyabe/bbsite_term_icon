@@ -20,14 +20,20 @@ Taxonomy 管理ページで、アイコンを追加したい Vocabulary を選�
 **MANAGE FIELDS** タブで、フィールドタイプが *Image* のフィールドを追加します。
 
 次に、この Vocabulary を利用しているコンテンツタイプ(例: Article) の表示フィールド
-管理画面に移動します(admin/structure/types/manage/<content type>/display)。
+管理画面に移動します(admin/structure/types/manage/**Content Type**/display)。
 
 先程設定した Vocabulary の関連付けられた Term reference フィールドの表示フォーマッ
 トプルダウンをクリックし、 **Icon liink** を選択します。
 
-表示オプションの設定で、**Image style** と **Image Field** を選択し、保存します。
+表示オプションの設定で、 **Image style** と **Image Field** を選択し、保存します。
 
 これで、term に設定された Image フィールドの画像がアイコンとして表示されるようにな
 ります。
 
+
+## ライセンスなど
+
+- License: GPL v2
+- Repository:  https://github.com/smiyabe/bbsite_term_icon
+- Satoshi Miyabe (miyabe @ bbsite.jp)
 
