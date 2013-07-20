@@ -20,7 +20,7 @@ Taxonomy 管理ページで、アイコンを追加したい Vocabulary を選�
 **MANAGE FIELDS** タブで、フィールドタイプが *Image* のフィールドを追加します。
 
 次に、この Vocabulary を利用しているコンテンツタイプ(例: Article) の表示フィールド
-管理画面に移動します(admin/structure/types/manage/**Content Type**/display)。
+管理画面に移動します(admin/structure/types/manage/ **Content Type** /display)。
 
 先程設定した Vocabulary の関連付けられた Term reference フィールドの表示フォーマッ
 トプルダウンをクリックし、 **Icon liink** を選択します。
